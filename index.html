@@ -152,6 +152,20 @@ footer .fine{margin-top:8px;font-size:12.5px;}
 
 .vip-line{max-width:580px;margin:40px auto 0 !important;padding-top:26px;border-top:1px solid rgba(217,175,162,.3);font-family:'Libre Baskerville','PT Serif',serif;font-style:italic;font-size:16px !important;line-height:1.8;color:#D8B3A7 !important;}
 .vip-line a{color:#F7EFE6;text-decoration:underline;text-underline-offset:3px;}
+
+/* МОДАЛЬНОЕ ОКНО СОГЛАСИЙ */
+.ov{position:fixed;inset:0;background:rgba(26,22,20,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:99;}
+.ov.on{display:flex;}
+.modal{background:var(--milk);max-width:520px;width:100%;padding:34px 30px 30px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.28);}
+.modal h3{font-family:'Libre Baskerville',Georgia,serif;font-size:20px;color:var(--ink);margin-bottom:8px;}
+.modal .sum{font-family:'Libre Baskerville',Georgia,serif;font-size:15px;color:var(--soft);margin-bottom:22px;}
+.modal .close{position:absolute;top:14px;right:18px;font-size:24px;line-height:1;color:var(--soft);cursor:pointer;background:none;border:0;}
+.chk{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;cursor:pointer;font-size:14px;line-height:1.6;color:var(--body);}
+.chk input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--bordo);cursor:pointer;}
+.chk a{color:var(--bordo);}
+.modal .go{width:100%;border:0;background:var(--bordo);color:#FDFCF9;padding:17px;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;cursor:pointer;display:block;text-align:center;text-decoration:none;}
+.modal .go[aria-disabled="true"]{background:#CFC8BF;color:#8C857D;cursor:not-allowed;}
+.modal .fine{margin-top:12px;font-size:12.5px;color:var(--soft);text-align:center;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -376,7 +390,7 @@ footer .fine{margin-top:8px;font-size:12.5px;}
     <div class="old-price">2 990 ₽</div>
     <div class="price">990 ₽</div>
     <!-- ЗАГЛУШКА: сюда вставить ссылку на оплату вместо # -->
-    <a class="btn btn-light" href="#">Забрать интенсив</a>
+    <a class="btn btn-light" href="#" id="buyBtn">Забрать интенсив</a>
     <p class="pay-note">Доступ открывается сразу после оплаты</p>
     <p class="vip-line">Хочешь не сама, а со мной рядом? В этом месяце я беру только 3 человека в индивидуальную работу со мной: 1 месяц сопровождения, 5 созвонов — по одному в неделю, личный чат со мной каждый день, практики и задания под твой конкретный запрос. <a href="https://t.me/the_tsarevna">Напиши мне</a> — расскажу подробнее.</p>
   </div>
@@ -394,5 +408,49 @@ footer .fine{margin-top:8px;font-size:12.5px;}
     <div class="fine">Практики дополняют заботу о себе и не заменяют консультацию врача</div>
   </div>
 </footer>
+
+<!-- ОКНО СОГЛАСИЙ -->
+<div class="ov" id="ov">
+  <div class="modal">
+    <button class="close" id="closeOv" aria-label="Закрыть">&times;</button>
+    <h3>Не железная леди</h3>
+    <div class="sum">Интенсив на 7 дней · 990 ₽</div>
+
+    <label class="chk">
+      <input type="checkbox" id="c1">
+      <span>Я принимаю условия <a href="oferta.html" target="_blank">договора оферты</a>, ознакомлен(а) с <a href="privacy.html" target="_blank">политикой обработки персональных данных</a> и даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a></span>
+    </label>
+
+    <label class="chk">
+      <input type="checkbox" id="c2">
+      <span>Хочу получать практики и письма от Алёны — <a href="rassylka.html" target="_blank">согласие на рассылку</a> (необязательно)</span>
+    </label>
+
+    <a class="go" id="goPay" aria-disabled="true" href="#">Перейти к оплате</a>
+    <div class="fine">Доступ открывается сразу после оплаты</div>
+  </div>
+</div>
+
+<script>
+// ЗАГЛУШКА: вставить сюда ссылку на оплату из Робокассы вместо #
+var PAY_URL = "#";
+
+var ov = document.getElementById('ov');
+var c1 = document.getElementById('c1');
+var go = document.getElementById('goPay');
+
+function sync(){
+  if (c1.checked) { go.setAttribute('aria-disabled','false'); go.setAttribute('href', PAY_URL); }
+  else { go.setAttribute('aria-disabled','true'); go.setAttribute('href','#'); }
+}
+c1.addEventListener('change', sync); sync();
+
+go.addEventListener('click', function(e){ if (go.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+
+document.getElementById('buyBtn').addEventListener('click', function(e){ e.preventDefault(); ov.classList.add('on'); });
+document.getElementById('closeOv').addEventListener('click', function(){ ov.classList.remove('on'); });
+ov.addEventListener('click', function(e){ if (e.target === ov) ov.classList.remove('on'); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') ov.classList.remove('on'); });
+</script>
 </body>
 </html>
