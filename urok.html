@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Не железная леди — урок</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{overflow-x:hidden;max-width:100%;}
+:root{
+  --milk:#FDFCF9; --ink:#262220; --body:#55504B; --soft:#948C83;
+  --bordo:#710C04; --hair:#E9E4DC; --wash:#F7F3EC;
+}
+body{font-family:'Inter',sans-serif;background:var(--milk);color:var(--body);font-size:16.5px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:860px;margin:0 auto;padding:0 28px;}
+
+header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:26px 0;border-bottom:1px solid var(--hair);}
+.brand{font-family:'Libre Baskerville',serif;font-weight:700;font-size:19px;color:var(--ink);}
+.brand-sub{font-family:'DM Sans',sans-serif;font-style:italic;font-size:13.5px;color:var(--soft);}
+
+.lead{padding:62px 0 0;text-align:center;}
+.eyebrow{font-family:'DM Sans',sans-serif;font-style:italic;font-size:14px;color:var(--bordo);letter-spacing:.02em;}
+h1{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.18;color:var(--ink);margin:16px 0 18px;letter-spacing:-.01em;}
+h1 .it{font-style:italic;color:var(--bordo);}
+.lead p{max-width:600px;margin:0 auto;font-size:17px;}
+
+.player{margin:44px 0 0;}
+.ratio{position:relative;width:100%;padding-top:56.25%;background:var(--wash);border:1px solid var(--hair);}
+.ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+.placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--soft);}
+.play{width:66px;height:66px;border-radius:50%;border:1px solid var(--hair);background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(38,34,32,.06);}
+.play span{display:block;width:0;height:0;border-left:16px solid var(--bordo);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px;}
+.placeholder small{font-family:'DM Sans',sans-serif;font-style:italic;font-size:13.5px;}
+
+.after{margin-top:46px;text-align:center;}
+.after p{max-width:600px;margin:0 auto 30px;}
+.btn{display:inline-block;background:var(--bordo);color:#FDFCF9;text-decoration:none;padding:19px 42px;font-size:14px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;}
+.btn:hover{background:#5a0a03;}
+.under{margin-top:16px;font-family:'DM Sans',sans-serif;font-style:italic;font-size:14px;color:var(--soft);}
+
+footer{margin-top:84px;border-top:1px solid var(--hair);padding:28px 0 46px;text-align:center;font-size:14px;color:var(--soft);}
+@media(max-width:600px){ .lead{padding-top:40px;} .btn{display:block;} }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;width:100%;">
+    <div>
+      <div class="brand">Алёна</div>
+      <div class="brand-sub">телесные практики и психология</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="lead">
+    <div class="eyebrow">бесплатный урок</div>
+    <h1>Почему ты всё понимаешь головой, <span class="it">а живёшь точно так же</span></h1>
+    <p>15 минут про то, что на самом деле держит тебя в режиме выживания — и что с этим делать уже сегодня вечером.</p>
+  </div>
+
+  <div class="player">
+    <div class="ratio">
+      <iframe src="https://kinescope.io/embed/vAejo3HMCY9wygmLNdq9fx" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="after">
+    <p>Если после урока захочешь не просто понять, а почувствовать разницу — дальше идёт семидневный интенсив с практиками на каждый вечер.</p>
+    <a class="btn" href="https://alenatsarevna.github.io/tsarevna/">Перейти к интенсиву</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">Алёна — телесные практики и психология</div>
+</footer>
+
+</body>
+</html>
